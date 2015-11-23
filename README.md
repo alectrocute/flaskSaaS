@@ -13,13 +13,13 @@ I didn't really like the said so boilerplate code I found searching the web. I r
 - [x] HTML layout file.
 - [x] "Functional" file structure.
 - [x] Python 3.x compliant.
-- [] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
-- [] Websockets (for example for live chatting)
-- [] Virtual environment.
-- [] Easy Heroky deployment.
-- [] Easy Digital Ocean deployment.
-- [] Tests.
-- [] Logging.
+- [ ] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
+- [ ] Websockets (for example for live chatting)
+- [ ] Virtual environment.
+- [ ] Easy Heroky deployment.
+- [ ] Easy Digital Ocean deployment.
+- [ ] Tests.
+- [ ] Logging.
 
 If you have any suggestions or want to help, feel free to drop me a line at <maxhalford25@gmail.com> or to create an issue.
 
