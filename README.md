@@ -1,4 +1,4 @@
-# Flask boilerplate
+# Flask boilerplate code
 
 ![License](http://img.shields.io/:license-mit-blue.svg)
 
