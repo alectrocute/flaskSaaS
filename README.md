@@ -57,17 +57,17 @@ I did what most people recommend for the application's structure. Basically, eve
 
 - Install the required libraries.
 
-	pip install -r requirements.txt
+	``pip install -r requirements.txt``
 
 - Create the database.
 
-	python createdb.py
+	``python createdb.py``
 
 - Run the application.
 
-	python run.py
+	``python run.py``
 
-- Navigate to ``localhost:5000``
+- Navigate to ``localhost:5000``.
 
 
 ### Virtual environment
