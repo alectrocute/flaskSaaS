@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="ui header">Hi {{ current_user.name }} {{ current_user.surname }}!</h1>
+
+{% endblock %}

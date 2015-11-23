@@ -1,0 +1,51 @@
+/* Layout */
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+   overflow-x: hidden;
+}
+
+#container {
+   height: 100%;
+   min-height: 100%;
+   position: relative;
+}
+
+#body {
+   margin: 20px;
+   min-height: 100%;
+}
+
+#footer {
+   bottom: 0;
+   width: 100%;
+   height: 50px;   /* Height of the footer */
+   text-align: center;
+}
+
+/* Forms */
+
+.form-user {
+   width: 33% !important;
+   margin: 0 auto !important;
+   margin-top: 10% !important;
+}
+
+.form-error {
+   color: #E50000 !important;
+}
+
+/* Flask flashes */
+
+.flash {
+   margin-right: 20px !important;
+}
+
+/* Errors */
+
+.error-box {
+   margin-top: 8%;
+}
