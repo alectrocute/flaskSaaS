@@ -13,6 +13,8 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 - [x] HTML layout file.
 - [x] "Functional" file structure.
 - [x] Python 3.x compliant.
+- [ ] Application factory.
+- [ ] Flask admin.
 - [ ] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
 - [ ] Websockets (for example for live chatting)
 - [ ] Virtual environment.
