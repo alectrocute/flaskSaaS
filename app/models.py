@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
     name = db.Column(db.String)
     surname = db.Column(db.String)
-    phone = db.Column(db.Integer)
+    phone = db.Column(db.String)
     email = db.Column(db.String, primary_key=True)
     confirmation = db.Column(db.Boolean)
     _password = db.Column(db.String)

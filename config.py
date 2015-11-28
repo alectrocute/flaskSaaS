@@ -1,5 +1,3 @@
-# Host and port of the server
-SERVER_NAME = '0.0.0.0:5000'
 # DEBUG has to be to False in a production enrironment for security reasons
 DEBUG = True
 # Secret key for generating tokens
