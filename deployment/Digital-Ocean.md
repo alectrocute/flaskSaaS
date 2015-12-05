@@ -1,6 +1,6 @@
 # Digital Ocean deployment
 
-The following script sets everything up so that the application can be deployed on a [Digital Ocean](https://www.digitalocean.com/) droplet with Ubuntu 14.04 and the Apache web server. Of course you should go through it and modify the parts that are unique to your application, I've marked them with ``<>``.
+The following script sets everything up so that the application can be deployed on a [Digital Ocean](https://www.digitalocean.com/) droplet with Ubuntu 14.04 and the Apache web server. Of course you should go through it and modify the parts that are unique to your application, I've marked them with ``<>``. You will also have to change the ``app.wsgi`` and the ``Flask-Boilerplate.conf`` files, just open the files and replace the obvious stuff.
 
 ```sh
 # Login and change password
