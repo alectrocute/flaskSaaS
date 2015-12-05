@@ -7,7 +7,7 @@
 {% block content %}
 
 	<div class="ui form-user center raised very padded text container segment">
-		<form class="ui form" action="{{ url_for('user.reset', token=token) }}" method="POST">
+		<form class="ui form" action="{{ url_for('userbp.reset', token=token) }}" method="POST">
 			<h4 class="ui dividing header">Choose a new password</h4>
 			{{ m.render_field(form.password) }}
 	    	{{ m.render_field(form.confirm) }}

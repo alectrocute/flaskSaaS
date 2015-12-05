@@ -6,3 +6,4 @@ flask-login
 flask-mail
 itsdangerous
 flask-bcrypt
+flask-admin

@@ -10,10 +10,10 @@ from app.toolbox import email
 ts = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 # Create a user blueprint
-user = Blueprint('user', __name__, url_prefix='/user')
+userbp = Blueprint('userbp', __name__, url_prefix='/user')
 
 
-@user.route('/signup', methods=['GET', 'POST'])
+@userbp.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = user_forms.SignUp()
     if form.validate_on_submit():
@@ -34,7 +34,7 @@ def signup():
         # Generate a random token
         token = ts.dumps(user.email, salt='email-confirm-key')
         # Build a confirm link with token
-        confirmUrl = url_for('user.confirm', token=token, _external=True)
+        confirmUrl = url_for('userbp.confirm', token=token, _external=True)
         # Render an HTML template to send by email
         html = render_template('email/confirm.html',
                                confirm_url=confirmUrl)
@@ -46,7 +46,7 @@ def signup():
     return render_template('user/signup.html', form=form, title='Sign up')
 
 
-@user.route('/confirm/<token>', methods=['GET', 'POST'])
+@userbp.route('/confirm/<token>', methods=['GET', 'POST'])
 def confirm(token):
     try:
         email = ts.loads(token, salt='email-confirm-key', max_age=86400)
@@ -62,10 +62,10 @@ def confirm(token):
     # Send to the signin page
     flash(
         'Your email address has been confirmed, you can sign in.', 'positive')
-    return redirect(url_for('user.signin'))
+    return redirect(url_for('userbp.signin'))
 
 
-@user.route('/signin', methods=['GET', 'POST'])
+@userbp.route('/signin', methods=['GET', 'POST'])
 def signin():
     form = user_forms.Login()
     if form.validate_on_submit():
@@ -80,27 +80,27 @@ def signin():
                 return redirect(url_for('index'))
             else:
                 flash('The password you have entered is wrong.', 'negative')
-                return redirect(url_for('user.signin'))
+                return redirect(url_for('userbp.signin'))
         else:
             flash('Unknown email address.', 'negative')
-            return redirect(url_for('user.signin'))
+            return redirect(url_for('userbp.signin'))
     return render_template('user/signin.html', form=form, title='Sign in')
 
 
-@user.route('/signout')
+@userbp.route('/signout')
 def signout():
     logout_user()
     flash('Succesfully signed out.', 'positive')
     return redirect(url_for('index'))
 
 
-@user.route('/account')
+@userbp.route('/account')
 @login_required
 def account():
     return render_template('user/account.html', title='Account')
 
 
-@user.route('/forgot', methods=['GET', 'POST'])
+@userbp.route('/forgot', methods=['GET', 'POST'])
 def forgot():
     form = user_forms.Forgot()
     if form.validate_on_submit():
@@ -112,7 +112,7 @@ def forgot():
             # Generate a random token
             token = ts.dumps(user.email, salt='password-reset-key')
             # Build a reset link with token
-            resetUrl = url_for('user.reset', token=token, _external=True)
+            resetUrl = url_for('userbp.reset', token=token, _external=True)
             # Render an HTML template to send by email
             html = render_template('email/reset.html', reset_url=resetUrl)
             # Send the email to user
@@ -122,11 +122,11 @@ def forgot():
             return redirect(url_for('index'))
         else:
             flash('Unknown email address.', 'negative')
-            return redirect(url_for('user.forgot'))
+            return redirect(url_for('userbp.forgot'))
     return render_template('user/forgot.html', form=form)
 
 
-@user.route('/reset/<token>', methods=['GET', 'POST'])
+@userbp.route('/reset/<token>', methods=['GET', 'POST'])
 def reset(token):
     try:
         email = ts.loads(token, salt='password-reset-key', max_age=86400)
@@ -143,8 +143,8 @@ def reset(token):
             db.session.commit()
             # Send to the signin page
             flash('Your password has been reset, you can sign in.', 'positive')
-            return redirect(url_for('user.signin'))
+            return redirect(url_for('userbp.signin'))
         else:
             flash('Unknown email address.', 'negative')
-            return redirect(url_for('user.forgot'))
+            return redirect(url_for('userbp.forgot'))
     return render_template('user/reset.html', form=form, token=token)

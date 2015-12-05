@@ -6,20 +6,21 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 
 ## Features
 
-- [x] User account sign up, sign in, password reset, all through email confirmation.
+- [x] User account sign up, sign in, password reset, all through asynchronous email confirmation.
 - [x] Form generation.
 - [x] Error handling.
 - [x] HTML macros.
 - [x] HTML layout file.
 - [x] "Functional" file structure.
 - [x] Python 3.x compliant.
+- [x] Asynchronous AJAX calls.
 - [ ] Application factory.
-- [ ] Flask admin.
+- [x] Online administration.
 - [ ] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
 - [ ] Websockets (for example for live chatting)
-- [ ] Virtual environment.
-- [ ] Easy Heroky deployment.
-- [ ] Easy Digital Ocean deployment.
+- [x] Virtual environment example.
+- [ ] Heroky deployment example.
+- [x] Digital Ocean deployment example.
 - [ ] Tests.
 - [ ] Logging.
 
@@ -36,6 +37,7 @@ If you have any suggestions or want to help, feel free to drop me a line at <max
 - [Flask-Mail](https://pythonhosted.org/Flask-Mail/) for sending mails.
 - [itsdangerous](http://pythonhosted.org/itsdangerous/) for generating random tokens for the confirmation emails.
 - [Flask-Bcrypt](https://flask-bcrypt.readthedocs.org/en/latest/) for generating secret user passwords.
+- [Flask-Admin](https://flask-admin.readthedocs.org/en/latest/) for building an administration interface.
 
 ### Frontend
 
@@ -74,7 +76,20 @@ I did what most people recommend for the application's structure. Basically, eve
 
 ### Virtual environment
 
-To do.
+```
+pip install virtualenv
+virtualenv venv
+venv/bin/activate (venv\scripts\activate on Windows)
+pip install -r requirements.txt
+python createdb.py
+python run.py
+```
+
+
+## Deploy
+
+- Heroku
+- [Digital Ocean](deployment/Digital-Ocean.md)
 
 
 ## Configuration
@@ -84,11 +99,6 @@ The goal is to keep most of the application's configuration in a single file cal
 I have included a working Gmail account to confirm user email addresses and reset user passwords, although in production you should't include the file if you push to GitHub because people can see it. The same goes for API keys, you should keep them secret. You can read more about secret configuration files [here](https://exploreflask.com/configuration.html).
 
 Read [this](http://flask.pocoo.org/docs/0.10/config/) for information on the possible configuration options.
-
-
-## Deploy
-
-To do.
 
 
 ## Examples

@@ -2,16 +2,6 @@
 
 {% block head %}
     {{ super() }}
-    <!-- Leaflet JS -->
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
-    <!-- Leaflet CSS -->
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet'/>
-    <!-- Map style -->
-    <style>
-    #map {
-    	height: 600px;
-    }
-    </style>
 {% endblock %}
 
 {% block content %}
@@ -21,31 +11,5 @@
 	{% if current_user.is_authenticated %}
 	  	<h2 class="ui header">Hi {{ current_user.name }}!</h2>
 	{% endif %}
-
-    <div id="map"></div>
-    
-    <script type="text/javascript">
-
-        L.mapbox.accessToken = 'pk.eyJ1IjoibGVtYXgiLCJhIjoidnNDV1kzNCJ9.iH26jLhEuimYd6vLOO6v1g';
-        var map = L.mapbox.map('map', 'mapbox.outdoors', {
-            maxZoom: 20,
-            fullscreenControl: true,
-            zoomControl: false
-        })
-        var layers = {
-            "Basique": L.mapbox.tileLayer('mapbox.outdoors').addTo(map),
-            "Lumineuse": L.mapbox.tileLayer('mapbox.light'),
-            "Sombre": L.mapbox.tileLayer('mapbox.dark'),
-            "Comics": L.mapbox.tileLayer('mapbox.comic'),
-            "Crayon": L.mapbox.tileLayer('mapbox.pencil')
-        }
-        L.control.layers(
-            layers,
-            null,
-            {position: 'topleft'}
-        ).addTo(map);
-        map.setView([48.8534100, 2.3488000], 13);
-
-    </script>
 
 {% endblock %}
