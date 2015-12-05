@@ -27,7 +27,7 @@ from app.models import User
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'user.login'
+login_manager.login_view = 'userbp.signin'
 
 
 @login_manager.user_loader
