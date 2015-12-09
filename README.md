@@ -9,8 +9,7 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 - [x] User account sign up, sign in, password reset, all through asynchronous email confirmation.
 - [x] Form generation.
 - [x] Error handling.
-- [x] HTML macros.
-- [x] HTML layout file.
+- [x] HTML macros and layout file.
 - [x] "Functional" file structure.
 - [x] Python 3.x compliant.
 - [x] Asynchronous AJAX calls.
@@ -19,10 +18,11 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 - [ ] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
 - [ ] Websockets (for example for live chatting)
 - [x] Virtual environment example.
-- [ ] Heroky deployment example.
+- [ ] Heroku deployment example.
 - [x] Digital Ocean deployment example.
 - [ ] Tests.
 - [ ] Logging.
+- [ ] Language selection.
 
 If you have any suggestions or want to help, feel free to drop me a line at <maxhalford25@gmail.com> or to create an issue.
 
@@ -86,7 +86,7 @@ python run.py
 ```
 
 
-## Deploy
+## Deployment
 
 - Heroku
 - [Digital Ocean](deployment/Digital-Ocean.md)
