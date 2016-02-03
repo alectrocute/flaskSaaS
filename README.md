@@ -14,7 +14,7 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 - [x] Python 3.x compliant.
 - [x] Asynchronous AJAX calls.
 - [ ] Application factory.
-- [x] Online administration.
+- [x] Administration panel.
 - [ ] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
 - [ ] Websockets (for example for live chatting)
 - [x] Virtual environment example.
@@ -23,6 +23,8 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 - [ ] Tests.
 - [ ] Logging.
 - [ ] Language selection.
+- [ ] Automatic API views.
+- [ ] API key generator.
 
 If you have any suggestions or want to help, feel free to drop me a line at <maxhalford25@gmail.com> or to create an issue.
 
