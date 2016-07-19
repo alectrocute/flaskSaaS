@@ -47,7 +47,7 @@ If you have any suggestions or want to help, feel free to drop me a line at <max
 ### Frontend
 
 - [Semantic UI](http://semantic-ui.com/) for the global style. Very similar to [Bootstrap](http://getbootstrap.com/).
-- [Leaflet JS](http://leafletjs.com/) for the map. I only added for the sake of the example.
+- [Leaflet JS](http://leafletjs.com/) for the map. I only added it for the sake of the example.
 
 ## Structure
 
