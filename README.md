@@ -18,10 +18,9 @@ I didn't really like the Flask starter projects I found searching the web. I rea
 - [ ] Static file bundling, automatic SCSS to CSS conversion and automatic minifying.
 - [ ] Websockets (for example for live chatting)
 - [x] Virtual environment example.
-- [ ] Heroku deployment example.
 - [x] Digital Ocean deployment example.
 - [ ] Tests.
-- [ ] Logging.
+- [x] Logging.
 - [ ] Language selection.
 - [ ] Automatic API views.
 - [ ] API key generator.
@@ -40,6 +39,10 @@ If you have any suggestions or want to help, feel free to drop me a line at <max
 - [itsdangerous](http://pythonhosted.org/itsdangerous/) for generating random tokens for the confirmation emails.
 - [Flask-Bcrypt](https://flask-bcrypt.readthedocs.org/en/latest/) for generating secret user passwords.
 - [Flask-Admin](https://flask-admin.readthedocs.org/en/latest/) for building an administration interface.
+- [Flask-Script](https://flask-script.readthedocs.io/en/latest/) for managing the app.
+- [structlog](http://structlog.readthedocs.io/en/stable/) for logging.
+- [Flask-DebugToolBar](https://flask-debugtoolbar.readthedocs.io/en/latest/) for adding a performance toolbar in development.
+- [gunicorn](http://gunicorn.org/) for acting as a reverse-proxy for Nginx.
 
 ### Frontend
 
@@ -48,55 +51,70 @@ If you have any suggestions or want to help, feel free to drop me a line at <max
 
 ## Structure
 
-I did what most people recommend for the application's structure. Basically, everything is contained in the ``app/`` folder.
+I did what most people recommend for the application's structure. Basically, everything is contained in the `app/` folder.
 
-- There you have the classic ``static/`` and ``templates/`` folders. The ``templates/`` folder contains macros, error views and a common layout.
-- I added a ``views/`` folder to separate the user and the website logic, which could be extended to the the admin views.
-- The same goes for the ``forms/`` folder, as the project grows it will be useful to split the WTForms code into separate files.
-- The ``models.py`` script contains the SQLAlchemy code, for the while it only contains the logic for a ``users`` table.
-- The ``toolbox/`` folder is a personal choice, in it I keep all the other code the application will need.
+- There you have the classic `static/` and `templates/` folders. The `templates/` folder contains macros, error views and a common layout.
+- I added a `views/` folder to separate the user and the website logic, which could be extended to the the admin views.
+- The same goes for the `forms/` folder, as the project grows it will be useful to split the WTForms code into separate files.
+- The `models.py` script contains the SQLAlchemy code, for the while it only contains the logic for a `users` table.
+- The `toolbox/` folder is a personal choice, in it I keep all the other code the application will need.
+- Management commands should be included in `manage.py`. Enter `python manage.py -?` to get a list of existing commands.
+- I added a Makefile for setup tasks, it can be quite useful once a project grows.
 
 
 ## Setup
 
 ### Vanilla
 
-- Install the required libraries.
+- Install the requirements and setup the development environment.
 
-	``pip install -r requirements.txt``
+	`make install && make dev`
 
 - Create the database.
 
-	``python createdb.py``
+	`python manage.py initdb`
 
 - Run the application.
 
-	``python run.py``
+	`python manage.py runserver`
 
-- Navigate to ``localhost:5000``.
+- Navigate to `localhost:5000`.
 
 
 ### Virtual environment
 
-```
+``
 pip install virtualenv
 virtualenv venv
 venv/bin/activate (venv\scripts\activate on Windows)
-pip install -r requirements.txt
-python createdb.py
-python run.py
-```
+make install
+make dev
+python manage.py initdb
+python manage.py runserver
+``
 
 
 ## Deployment
 
-- Heroku
-- [Digital Ocean](deployment/Digital-Ocean.md)
+The current application can be deployed with Docker [in a few commands](https://realpython.com/blog/python/dockerizing-flask-with-compose-and-machine-from-localhost-to-the-cloud/).
+
+```sh
+cd ~/path/to/application/
+docker-machine create -d virtualbox --virtualbox-memory 512 --virtualbox-cpu-count 1 dev
+docker-machine env dev
+eval "$(docker-machine env dev)"
+docker-compose build
+docker-compose up -d
+docker-compose run web make dev
+docker-compose run web python3 manage.py initdb
+```
+
+Then access the IP address given by `docker-machine ip dev` et voilà. This is exactly how [OpenBikes's API is being deployed](https://github.com/OpenBikes/api.openbikes.co).
 
 
 ## Configuration
 
-The goal is to keep most of the application's configuration in a single file called ``config.py``. The one I have included is basic and yet it covers most of the important stuff.
+The goal is to keep most of the application's configuration in a single file called `config.py`. I added a `config_dev.py` and a `config_prod.py` who inherit from `config_common.py`. The trick is to symlink either of these to `config.py`. This is done in by running `make dev` or `make prod`.
 
 I have included a working Gmail account to confirm user email addresses and reset user passwords, although in production you should't include the file if you push to GitHub because people can see it. The same goes for API keys, you should keep them secret. You can read more about secret configuration files [here](https://exploreflask.com/configuration.html).
 

@@ -1,0 +1,14 @@
+web:
+  restart: always
+  build: ./
+  expose:
+    - "8000"
+  command: /usr/local/bin/gunicorn -w 2 -b :8000 app:app
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  links:
+    - web:web

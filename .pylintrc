@@ -1,0 +1,12 @@
+[FORMAT]
+max-line-length=100
+indent-string='    '
+
+[REPORTS]
+files-output=no
+reports=yes
+evaluation=10 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+
+[TYPECHECK]
+ignored-modules=flask_sqlalchemy
+ignored-classes=SQLObject,SQLAlchemy,Base

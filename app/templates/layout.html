@@ -1,8 +1,7 @@
-<!-- HTML macros -->
-{% import "macros.html" as m %}
 <!DOCTYPE html>
+{% import "macros.html" as m %}
 <html lang="en">
-	<div id="container">
+	<body id="container">
    		<div id="header">
    			{% block head %}
 				<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
@@ -31,7 +30,7 @@
 				 		<!-- User is logged in -->
 				      	{% if current_user.is_authenticated %}
 				      		<div class="item">
-				        		<a class="ui primary button" href="/user/account">{{ current_user.name }} {{ current_user.surname }}</a>
+				        		<a class="ui primary button" href="/user/account">{{ current_user.full_name }}</a>
 				    		</div>
 				    		<div class="item">
 				        		<a class="ui default button" href="/user/signout">Sign out</a>
@@ -74,5 +73,5 @@
 	    		</div>
 	  		</div>
 		</div>
-	</div>
+	</body>
 </html>

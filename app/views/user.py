@@ -19,8 +19,8 @@ def signup():
     if form.validate_on_submit():
         # Create a user who hasn't validated his email address
         user = models.User(
-            name=form.name.data,
-            surname=form.surname.data,
+            first_name=form.first_name.data,
+            last_name=form.last_name.data,
             phone=form.phone.data,
             email=form.email.data,
             confirmation=False,

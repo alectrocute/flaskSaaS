@@ -60,9 +60,9 @@ class SignUp(Form):
 
     ''' User sign up form. '''
 
-    name = TextField(validators=[Required(), Length(min=2)],
+    first_name = TextField(validators=[Required(), Length(min=2)],
                      description='Name')
-    surname = TextField(validators=[Required(), Length(min=2)],
+    last_name = TextField(validators=[Required(), Length(min=2)],
                         description='Surname')
     phone = TextField(validators=[Required(), Length(min=6)],
                       description='Phone number')
