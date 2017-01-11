@@ -9,7 +9,7 @@
 	<h1 class="ui header">{{ title }}</h1>
 
 	{% if current_user.is_authenticated %}
-	  	<h2 class="ui header">Hi {{ current_user.name }}!</h2>
+	  	<h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
 	{% endif %}
 
 {% endblock %}
