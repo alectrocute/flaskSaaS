@@ -9,5 +9,7 @@ Flask-SQLAlchemy==2.1
 Flask-WTF==0.12
 gunicorn==19.4.5
 itsdangerous==0.24
+pytz==2016.10
+structlog==16.1.0
 termcolor==1.1.0
 WTForms==2.1
