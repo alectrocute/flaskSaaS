@@ -137,3 +137,7 @@ Read [this](http://flask.pocoo.org/docs/0.10/config/) for information on the pos
 - [flask-boilerplate](https://github.com/mjhea0/flask-boilerplate) by [Michael Herman](https://github.com/mjhea0).
 - [Flask-Foundation](https://github.com/JackStouffer/Flask-Foundation) by [Jack Stouffer](https://github.com/JackStouffer).
 - [fbone](https://github.com/imwilsonxu/fbone) by [Wilson Xu](https://github.com/imwilsonxu).
+
+## License
+
+The MIT License (MIT). Please see the [license file](LICENSE) for more information.
