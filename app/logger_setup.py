@@ -56,11 +56,11 @@ def add_fields(_, level, event_dict):
     return event_dict
 
 # Add a handler to write log messages to a file
-if app.config.get('LOG_FILE'):
-    file_handler = RotatingFileHandler(app.config['LOG_FILENAME'],
-                                       app.config['LOG_MAXBYTES'],
-                                       app.config['LOG_BACKUPS'],
-                                       'a',
+if app.config.get('LOG_FILENAME'):
+   file_handler = RotatingFileHandler(filename=app.config['LOG_FILENAME'],
+                                       maxBytes=app.config['LOG_MAXBYTES'],
+                                       backupCount=app.config['LOG_BACKUPS'],
+                                       mode='a',
                                        encoding='utf-8')
     file_handler.setLevel(logging.DEBUG)
     app.logger.addHandler(file_handler)
