@@ -38,6 +38,7 @@ app.logger.removeHandler(app.logger.handlers[0])
 
 TZ = pytz.timezone(app.config['TIMEZONE'])
 
+
 def add_fields(_, level, event_dict):
     ''' Add custom fields to each record. '''
     now = dt.datetime.now()
@@ -55,9 +56,10 @@ def add_fields(_, level, event_dict):
 
     return event_dict
 
+
 # Add a handler to write log messages to a file
 if app.config.get('LOG_FILENAME'):
-   file_handler = RotatingFileHandler(filename=app.config['LOG_FILENAME'],
+    file_handler = RotatingFileHandler(filename=app.config['LOG_FILENAME'],
                                        maxBytes=app.config['LOG_MAXBYTES'],
                                        backupCount=app.config['LOG_BACKUPS'],
                                        mode='a',
