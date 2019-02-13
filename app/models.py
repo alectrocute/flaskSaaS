@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String)
     email = db.Column(db.String, primary_key=True)
     confirmation = db.Column(db.Boolean)
+    paid = db.Column(db.Boolean)
     _password = db.Column(db.String)
 
     @property
@@ -26,7 +27,7 @@ class User(db.Model, UserMixin):
         return self._password
 
     @password.setter
-    def _set_password(self, plaintext):
+    def password(self, plaintext):
         self._password = bcrypt.generate_password_hash(plaintext)
 
     def check_password(self, plaintext):
@@ -34,4 +35,7 @@ class User(db.Model, UserMixin):
 
     def get_id(self):
         return self.email
+
+    def is_paid(self):
+        return self.paid
 

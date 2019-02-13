@@ -1,10 +1,21 @@
-from flask import (Blueprint, render_template, redirect, url_for,
+from flask import (Blueprint, render_template, redirect, request, url_for,
                    abort, flash)
-from flask.ext.login import login_user, logout_user, login_required
+from flask.ext.login import login_user, logout_user, login_required, current_user
 from itsdangerous import URLSafeTimedSerializer
 from app import app, models, db
 from app.forms import user as user_forms
 from app.toolbox import email
+# Setup Stripe integration
+import stripe
+import json
+from json import dumps
+
+stripe_keys = {
+	'secret_key': "sk_test_GvpPOs0XFxeP0fQiWMmk6HYe",
+	'publishable_key': "pk_test_UU62FhsIB6457uPiUX6mJS5x"
+}
+
+stripe.api_key = stripe_keys['secret_key']
 
 # Serializer for generating random tokens
 ts = URLSafeTimedSerializer(app.config['SECRET_KEY'])
@@ -148,3 +159,52 @@ def reset(token):
             flash('Unknown email address.', 'negative')
             return redirect(url_for('userbp.forgot'))
     return render_template('user/reset.html', form=form, token=token)
+
+@app.route('/user/pay')
+@login_required
+def pay():
+    user = models.User.query.filter_by(email=current_user.email).first()
+    if user.paid == 0:
+    	return render_template('user/buy.html', key=stripe_keys['publishable_key'], email=current_user.email)
+    return "You already paid."
+
+@app.route('/user/charge', methods=['POST'])
+@login_required
+def charge():
+    # Amount in cents
+    amount = 500
+    customer = stripe.Customer.create(email=current_user.email, source=request.form['stripeToken'])
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='Service Plan'
+    )
+    user = models.User.query.filter_by(email=current_user.email).first()
+    user.paid = 1
+    db.session.commit()
+    # do anything else, like execute shell command to enable user's service on your app
+    return render_template('user/charge.html', amount=amount)
+
+@app.route('/api/payFail', methods=['POST', 'GET'])
+def payFail():
+	content = request.json
+	stripe_email = content['data']['object']['email']
+	user = models.User.query.filter_by(email=stripe_email).first()
+	if user is not None: 
+		user.paid = 0
+		db.session.commit()
+		# do anything else, like execute shell command to disable user's service on your app
+	return "Response: User with associated email " + str(stripe_email) + " updated on our end (payment failure)."
+
+@app.route('/api/paySuccess', methods=['POST', 'GET'])
+def paySuccess():
+	content = request.json
+	stripe_email = content['data']['object']['email']
+	user = models.User.query.filter_by(email=stripe_email).first()
+	if user is not None: 
+		user.paid = 1
+		db.session.commit()
+		# do anything else on payment success, maybe send a thank you email or update more db fields?
+	return "Response: User with associated email " + str(stripe_email) + " updated on our end (paid)."
+
