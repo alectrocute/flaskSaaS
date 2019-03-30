@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% import "macros.html" as m %}
-<html lang="en">
-	<body id="container">
+<html lang="en" style= "background-color: #fff;">
+	<body id="container" style="background-color: #f24602;">
    		<div id="header">
    			{% block head %}
 				<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
@@ -22,9 +22,8 @@
 				<!-- Browser tab name -->
 				<title>{{ title }}</title>
 				<!-- Navbar -->
-				<div class="ui attached inverted menu">
+				<div class="ui attached inverted menu" style="border-radius: 0;">
 				  	{{ m.nav_link('index', 'Home') }}
-				  	{{ m.nav_link('map', 'Map') }}
 					{{ m.nav_link('contact', 'Contact') }}
 				 	<div class="right menu">
 				 		<!-- User is logged in -->
@@ -65,10 +64,7 @@
 			<div class="ui divider"></div>
 	    		<div class="ui divided horizontal footer link list">
 			      	<div class="item">
-			        	Max Halford
-			      	</div>
-			      	<div class="item">
-			        	<a href="https://github.com/MaxHalford"><i class="github icon"></i></a>
+			        	FastIdea 2019
 			      	</div>
 	    		</div>
 	  		</div>

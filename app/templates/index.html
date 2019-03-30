@@ -6,10 +6,24 @@
 
 {% block content %}
 
-	<h1 class="ui header">{{ title }}</h1>
+	<h1 class="textheader ui" style = "color: #FFF; font-size: 48px; font-family: lato;">{{ title }}</h1>
 
 	{% if current_user.is_authenticated %}
-	  	<h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
-	{% endif %}
+	  	<h2 class="ui header">welcome back {{ current_user.first_name }}!</h2>
+		<p "color: #FFF; font-size: 20px; font-family: lato;"> Find an idea or post one! </p>
+	{% else %}
+<p style = "text-align: justify; color: #FFF; font-size: 20px; font-family: lato;"> Welcome to <b>FastIdea!</b> We are a platform designed by students for students. </p>
+		<p style = "text-align: justify; color: #FFF; font-size: 20px; font-family: lato;"> If you want to join in, either <a style="color: #00b5ad; font-weight: 700; font-size: 22px;" href="user/signin"> sign in to your account</a> or <a style = "color: #00b5ad; font-weight: 700; font-size: 22px;" href="user/signup"> sign up now!</a></p>
 
+	{% endif %}
+	<hr>
+
+	<center>
+	<div class="preview">
+		
+	<p style="margin-top: 40px; margin-bottom: 40px; color: #FFF; font-size: 20px; font-family: lato;"> share your idea <span style="color: #00b5ad; font-size: 30px; font-weight: 700; margin-left: 40px; margin-right: 40px;"> OR </span> find other ideas! </p>	
+		</center>
+	<hr>
+		
+	</div>
 {% endblock %}

@@ -1,11 +1,25 @@
 /* Layout */
 
 html,
-body {
+.body {
    margin:0;
+   margin-left: 60px !important;
+   margin-right: 60px !important;
    padding:0;
    height:100%;
    overflow-x: hidden;
+   font-family: lato;
+}
+
+.body .text {
+   font-size: 24px !important;
+   color: #fff !important;
+   
+}
+
+.body .textheader{
+   font-size: 48px !important;  
+   color: #fff !important;
 }
 
 #container {

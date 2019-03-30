@@ -1,0 +1,18 @@
+{
+  "Website":
+  {
+    "roles": ["Front-End Developer", "Back-End Developer", "Designer"]
+    },
+  "product":
+  {
+    "roles": ["Engineer", "Salesperson", "Testers"]
+    },
+  "environment":
+  {
+    "roles": ["Activists", "Researchers", "Volunteers"]
+  },
+  "startup":
+  {
+    "roles" : ["Project Manager", "Developers"]
+  }
+}

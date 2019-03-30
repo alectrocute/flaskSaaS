@@ -15,6 +15,11 @@ A fork of [Max Halford's](https://github.com/MaxHalford) [flask-boilerplate](htt
 - [x] Asynchronous AJAX calls.
 - [x] Administration panel.
 - [x] Logging.
+- [x] Wordlist + script logic. 4:38PM
+- [ ] Landing Page (45%)
+- [ ] Contact Page
+- [ ] Search Page (or bar)
+- [ ] Idea Submission
 - [ ] Money comes later
 
 ## Libraries
