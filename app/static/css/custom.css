@@ -12,13 +12,13 @@ html,
 }
 
 .body .text {
-   text-size: 24px !important;
+   font-size: 24px !important;
    color: #fff !important;
    
 }
 
 .body .textheader{
-   text-size: 48px !important;  
+   font-size: 48px !important;  
    color: #fff !important;
 }
 
