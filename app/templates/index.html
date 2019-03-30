@@ -6,13 +6,13 @@
 
 {% block content %}
 
-	<h1 class="ui header">{{ title }}</h1>
+	<h1 class="textheader ui header">{{ title }}</h1>
 
 	{% if current_user.is_authenticated %}
 	  	<h2 class="ui header">welcome back {{ current_user.first_name }}!</h2>
 	{% else %}
-		<p> Welcome to FastIdea! We are a platform designed by students for students. </p>
-		<p> If you want to join in, either <a href="user/signin"> sign in to your account</a> or <a href="user/signup"> sign up now!</a></p>
+		<p class="text"> Welcome to FastIdea! We are a platform designed by students for students. </p>
+		<p class="text"> If you want to join in, either <a href="user/signin"> sign in to your account</a> or <a href="user/signup"> sign up now!</a></p>
 
 	{% endif %}
 	
