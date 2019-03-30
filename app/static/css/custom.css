@@ -3,9 +3,17 @@
 html,
 body {
    margin:0;
+   margin-left: 15px;
+   margin-right: 15px;
    padding:0;
    height:100%;
    overflow-x: hidden;
+   font-family: lato;
+}
+
+p{
+   text-size: 16px;
+   
 }
 
 #container {
