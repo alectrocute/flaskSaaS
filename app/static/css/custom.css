@@ -1,7 +1,7 @@
 /* Layout */
 
 html,
-body {
+.body {
    margin:0;
    margin-left: 60px !important;
    margin-right: 60px !important;
@@ -11,13 +11,13 @@ body {
    font-family: lato;
 }
 
-body p .text {
+.body .text {
    text-size: 24px !important;
    color: #fff !important;
    
 }
 
-body h1 .textheader{
+.body .textheader{
    text-size: 48px !important;  
    color: #fff !important;
 }
