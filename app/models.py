@@ -39,3 +39,8 @@ class User(db.Model, UserMixin):
     def is_paid(self):
         return self.paid
 
+class Idea(db.Model):
+    """"""
+    __tablename__ = "ideas"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)

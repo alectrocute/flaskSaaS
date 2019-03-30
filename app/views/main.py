@@ -1,7 +1,7 @@
-from flask import render_template, jsonify
+from flask import render_template, jsonify,request
 from app import app
+from app.models import Idea
 import random
-
 
 @app.route('/')
 @app.route('/index')
@@ -25,3 +25,7 @@ def map_refresh():
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title='Contact')
+
+
+
+

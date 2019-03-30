@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div class="ui form-user center raised very padded text container segment">
+		<form class="ui form" action="/idea/new" method="post">
+			<h4 class="ui dividing header">Add new Idea</h4>
+			{{ m.render_field(form.title) }}
+			{{ form.csrf_token }}
+		  	<button class="ui primary button" type="submit">Submit</button>
+		</form>
+	</div>
+
+{% endblock %}
