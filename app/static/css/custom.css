@@ -11,13 +11,13 @@ body {
    font-family: lato;
 }
 
-p {
+.text {
    text-size: 24px !important;
    color: #fff !important;
    
 }
 
-h1 {
+.textheader{
    text-size: 48px !important;  
    color: #fff !important;
 }
