@@ -3,8 +3,8 @@
 html,
 body {
    margin:0;
-   margin-left: 60px;
-   margin-right: 60px;
+   margin-left: !60px;
+   margin-right: !60px;
    padding:0;
    height:100%;
    overflow-x: hidden;
@@ -12,14 +12,14 @@ body {
 }
 
 p {
-   text-size: 24px;
-   color: #fff;
+   text-size: !24px;
+   color: !#fff;
    
 }
 
 h1 {
-   text-size: 48px;  
-   color: #fff;
+   text-size: !48px;  
+   color: !#fff;
 }
 
 #container {
