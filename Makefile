@@ -13,7 +13,7 @@ install:
 
 ## Setup developpement environment
 .PHONY: dev
-dev:
+#dev:
 	cd app && ln -sf config_dev.py config.py
 
 ## Setup production environment
