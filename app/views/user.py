@@ -85,10 +85,15 @@ def signin():
         if user is not None:
             # Check the password is correct
             if user.check_password(form.password.data):
-                login_user(user)
-                # Send back to the home page
-                flash('Succesfully signed in.', 'positive')
-                return redirect(url_for('index'))
+		#Check if email is confirmed
+		if user.confirmation == True:
+			login_user(user)			
+                	# Send back to the home page
+			flash('Succesfully signed in.', 'positive')
+			return redirect(url_for('userbp.account'))
+		else:
+                    flash('Confirm your email address first.', 'negative')
+                    return redirect(url_for('userbp.signin'))
             else:
                 flash('The password you have entered is wrong.', 'negative')
                 return redirect(url_for('userbp.signin'))
