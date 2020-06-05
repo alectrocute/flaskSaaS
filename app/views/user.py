@@ -11,8 +11,8 @@ import json
 from json import dumps
 
 stripe_keys = {
-	'secret_key': "sk_test_GvpPOs0XFxeP0fQiWMmk6HYe",
-	'publishable_key': "pk_test_UU62FhsIB6457uPiUX6mJS5x"
+    'secret_key': "sk_test_GvpPOs0XFxeP0fQiWMmk6HYe",
+    'publishable_key': "pk_test_UU62FhsIB6457uPiUX6mJS5x"
 }
 
 stripe.api_key = stripe_keys['secret_key']
@@ -85,13 +85,13 @@ def signin():
         if user is not None:
             # Check the password is correct
             if user.check_password(form.password.data):
-		#Check if email is confirmed
-		if user.confirmation == True:
-			login_user(user)			
-                	# Send back to the home page
-			flash('Succesfully signed in.', 'positive')
-			return redirect(url_for('userbp.account'))
-		else:
+        #Check if email is confirmed
+                if user.confirmation:
+                    login_user(user)
+                            # Send back to the home page
+                    flash('Succesfully signed in.', 'positive')
+                    return redirect(url_for('userbp.account'))
+                else:
                     flash('Confirm your email address first.', 'negative')
                     return redirect(url_for('userbp.signin'))
             else:
@@ -170,7 +170,7 @@ def reset(token):
 def pay():
     user = models.User.query.filter_by(email=current_user.email).first()
     if user.paid == 0:
-    	return render_template('user/buy.html', key=stripe_keys['publishable_key'], email=current_user.email)
+        return render_template('user/buy.html', key=stripe_keys['publishable_key'], email=current_user.email)
     return "You already paid."
 
 @app.route('/user/charge', methods=['POST'])
@@ -193,23 +193,23 @@ def charge():
 
 @app.route('/api/payFail', methods=['POST', 'GET'])
 def payFail():
-	content = request.json
-	stripe_email = content['data']['object']['email']
-	user = models.User.query.filter_by(email=stripe_email).first()
-	if user is not None: 
-		user.paid = 0
-		db.session.commit()
-		# do anything else, like execute shell command to disable user's service on your app
-	return "Response: User with associated email " + str(stripe_email) + " updated on our end (payment failure)."
+    content = request.json
+    stripe_email = content['data']['object']['email']
+    user = models.User.query.filter_by(email=stripe_email).first()
+    if user is not None: 
+        user.paid = 0
+        db.session.commit()
+        # do anything else, like execute shell command to disable user's service on your app
+    return "Response: User with associated email " + str(stripe_email) + " updated on our end (payment failure)."
 
 @app.route('/api/paySuccess', methods=['POST', 'GET'])
 def paySuccess():
-	content = request.json
-	stripe_email = content['data']['object']['email']
-	user = models.User.query.filter_by(email=stripe_email).first()
-	if user is not None: 
-		user.paid = 1
-		db.session.commit()
-		# do anything else on payment success, maybe send a thank you email or update more db fields?
-	return "Response: User with associated email " + str(stripe_email) + " updated on our end (paid)."
+    content = request.json
+    stripe_email = content['data']['object']['email']
+    user = models.User.query.filter_by(email=stripe_email).first()
+    if user is not None: 
+        user.paid = 1
+        db.session.commit()
+        # do anything else on payment success, maybe send a thank you email or update more db fields?
+    return "Response: User with associated email " + str(stripe_email) + " updated on our end (paid)."
 
