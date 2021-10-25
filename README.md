@@ -55,7 +55,7 @@ I did what most people recommend for the application's structure. Basically, eve
 - The `toolbox/` folder is a personal choice, in it I keep all the other code the application will need.
 - Management commands should be included in `manage.py`. Enter `python manage.py -?` to get a list of existing commands.
 - I added a Makefile for setup tasks, it can be quite useful once a project grows.
-
+- Added `map/`, will show data on a leaflet/google map
 
 ## Setup
 
